@@ -1,0 +1,7 @@
+const express = require("express");
+const Router = express.Router();
+const controller = require("../controllers/pipelineController");
+
+Router.get("/get/all", controller.getAllPipelines);
+
+module.exports = Router;

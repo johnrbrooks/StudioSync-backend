@@ -1,14 +1,12 @@
 const express = require("express");
 const Router = express.Router();
 
-/* const UserRouter = require("./userRouter");
-const ChatRouter = require("./chatRouter");
-const MessageRouter = require("./messageRouter");
-const RequestRouter = require("./requestRouter");
+const UserRouter = require("./userRouter");
+const PipelineRouter = require("./pipelineRouter");
+const ProspectRouter = require("./prospectRouter");
 
 Router.use("/users", UserRouter);
-Router.use("/chats", ChatRouter);
-Router.use("/messages", MessageRouter);
-Router.use("/requests", RequestRouter); */
+Router.use("/pipelines", PipelineRouter);
+Router.use("/prospects", ProspectRouter);
 
 module.exports = Router;

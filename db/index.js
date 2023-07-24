@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { MONGO_PW } = require("../config");
 
-let MONGODB_URI = `mongodb+srv://quark934:${MONGO_PW}@myfitnessplanner.jgvzdwg.mongodb.net/?retryWrites=true&w=majority`;
+let MONGODB_URI = `mongodb+srv://quark934:${MONGO_PW}@myfitnessplanner.jgvzdwg.mongodb.net/StudioSync?retryWrites=true&w=majority`;
 
 mongoose
   .connect(MONGODB_URI)
