@@ -1,4 +1,5 @@
 const { Prospect } = require('../models')
+const { User } = require('../models')
 
 const getAllProspects = async (req, res) => {
     try {
@@ -18,7 +19,22 @@ const getProspectById = async (req, res) => {
   }
 }
 
+const getUserProspects = async (req, res) => {
+  try {
+    let user = await User.findOne({ _id: req.params.id })
+    if(user) {
+      const prospects = user.pipeline
+      res.json(prospects)
+    } else {
+      res.status(404).json({ error: 'User not found' })
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' })
+  }
+}
+
 module.exports = {
     getAllProspects,
     getProspectById,
+    getUserProspects,
 }

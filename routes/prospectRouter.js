@@ -4,5 +4,6 @@ const controller = require("../controllers/prospectController")
 
 Router.get("/get/all", controller.getAllProspects)
 Router.get("/get/:id", controller.getProspectById)
+Router.get("/get/userprospects/:id")
 
 module.exports = Router
