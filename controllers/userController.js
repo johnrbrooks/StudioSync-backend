@@ -1,5 +1,5 @@
 const { User } = require('../models')
-const { Pipeline } = require('../models')
+const { Calendar } = require('../models')
 
 const getAllUsers = async (req, res) => {
     try {
@@ -10,6 +10,31 @@ const getAllUsers = async (req, res) => {
     }
   };
 
+const getUserById = async (req, res) => {
+  try {
+    let user = await User.findOne({ _id: req.params.id })
+    res.json(user)
+  } catch (error) {
+    res.send(error)
+  }
+}
+
+const createUser = async (req, res) => {
+  try {
+    let newUser = await User.create({
+      name: req.body.name,
+      username: req.body.username,
+      password: req.body.password,
+    })
+    res.send(newUser)
+  } catch (error) {
+    res.send(error)
+  }
+
+}
+
 module.exports = {
     getAllUsers,
+    getUserById,
+    createUser
 }

@@ -2,7 +2,7 @@ const { Schema } = require('mongoose')
 
 const prospectSchema = new Schema (
     {
-        user_pipeline: { type: Schema.Types.ObjectId, ref: "Pipeline", required: true },
+        user_pipeline: { type: Schema.Types.ObjectId, ref: "User", required: true },
         contact_name: { type: String, required: true },
         email: { type: String, required: true },
         phone: { type: String },
