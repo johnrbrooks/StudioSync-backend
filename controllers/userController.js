@@ -25,6 +25,8 @@ const createUser = async (req, res) => {
       name: req.body.name,
       username: req.body.username,
       password: req.body.password,
+      pipeline: [],
+      mode: true,
     })
     res.send(newUser)
   } catch (error) {
