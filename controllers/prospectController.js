@@ -9,6 +9,16 @@ const getAllProspects = async (req, res) => {
     }
   };
 
+const getProspectById = async (req, res) => {
+  try {
+    let prospect = await Prospect.findOne({ _id: req.params.id });
+    res.json(prospect);
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 module.exports = {
     getAllProspects,
+    getProspectById,
 }
