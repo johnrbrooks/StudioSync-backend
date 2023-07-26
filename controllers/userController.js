@@ -19,6 +19,15 @@ const getUserById = async (req, res) => {
   }
 }
 
+const getUserByUsername = async (req, res) => {
+  try {
+    let user = await User.findOne({ username: req.body.username })
+    res.json(user)
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 const createUser = async (req, res) => {
   try {
     let newUser = await User.create({
@@ -38,5 +47,6 @@ const createUser = async (req, res) => {
 module.exports = {
     getAllUsers,
     getUserById,
+    getUserByUsername,
     createUser
 }
