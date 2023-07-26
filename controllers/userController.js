@@ -21,7 +21,8 @@ const getUserById = async (req, res) => {
 
 const getUserByUsername = async (req, res) => {
   try {
-    let user = await User.findOne({ username: req.body.username })
+    const { username } = req.params
+    let user = await User.findOne({ username: `${username}` })
     res.json(user)
   } catch (error) {
     res.send(error)
