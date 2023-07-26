@@ -22,7 +22,7 @@ const getProspectById = async (req, res) => {
 const getUserProspects = async (req, res) => {
   try {
     console.log(req.params.id)
-    let user = await User.findOne({ _id: req.params.id })
+    let user = await User.findOne({ _id: req.params.id }).populate('pipeline')
     if(user) {
       const prospects = user.pipeline
       res.json(prospects)
