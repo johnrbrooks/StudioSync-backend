@@ -24,6 +24,7 @@ const getUserProspects = async (req, res) => {
     let user = await User.findOne({ _id: req.params.id })
     if(user) {
       const prospects = user.pipeline.map((prospect) => prospect._id)
+      console.log(prospects)
       res.json(prospects)
     } else {
       res.status(404).json({ error: 'User not found' })
