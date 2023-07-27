@@ -50,6 +50,7 @@ const createProspect = async (req, res) => {
     
     const prospectId = newProspect._id
     const userId = req.body.user_pipeline
+    console.log(userId)
 
     await User.findOneAndUpdate(
       { _id: userId },
