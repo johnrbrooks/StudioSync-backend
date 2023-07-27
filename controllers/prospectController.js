@@ -83,7 +83,8 @@ const updateProspect = async (req, res) => {
         interested_services: req.body.interested_services,
         next_follow_up: req.body.next_follow_up,
         notes: req.body.notes,
-      }
+      },
+      { new: true }
     )
     res.send(updateProspect)
   } catch (error) {
