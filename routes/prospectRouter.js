@@ -10,6 +10,6 @@ Router.put("/update/:id", controller.updateProspect)
 
 Router.post("/create", controller.createProspect)
 
-Router.post("/delete/:id", controller.deleteProspect)
+Router.delete("/delete/:id", controller.deleteProspect)
 
 module.exports = Router
