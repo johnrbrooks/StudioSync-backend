@@ -24,7 +24,7 @@ const getUserProspects = async (req, res) => {
     let user = await User.findOne({ _id: req.params.id })
     if(user) {
       console.log(user)
-      const prospects = user.pipeline
+      const prospects = user.pipeline.map((prospect) => prospect.toString())
       console.log(prospects)
       res.json(prospects)
     } else {
