@@ -42,7 +42,6 @@ const createUser = async (req, res) => {
   } catch (error) {
     res.send(error)
   }
-
 }
 
 module.exports = {
