@@ -23,6 +23,7 @@ const getUserProspects = async (req, res) => {
   try {
     let user = await User.findOne({ _id: req.params.id })
     if(user) {
+      console.log(user.pipeline)
       const prospects = user.pipeline
       res.json(prospects)
     } else {
