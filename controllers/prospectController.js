@@ -65,9 +65,36 @@ const createProspect = async (req, res) => {
   }
 }
 
+const updateProspect = async (req, res) => {
+
+  const prospectId = req.params.id
+
+  try {
+    let updateProspect = await Prospect.findOneAndUpdate(
+      { _id: prospectId },
+      {
+        user_pipeline: req.body.user_pipeline,
+        contact_name: req.body.contact_name,
+        email: req.body.email,
+        phone: req.body.phone,
+        stage: req.body.stage,
+        probability: req.body.probability,
+        projected_value: req.body.projected_value,
+        interested_services: req.body.interested_services,
+        next_follow_up: req.body.next_follow_up,
+        notes: req.body.notes,
+      }
+    )
+    res.send(updateProspect)
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 module.exports = {
     getAllProspects,
     getProspectById,
     getUserProspects,
-    createProspect
+    createProspect,
+    updateProspect
 }

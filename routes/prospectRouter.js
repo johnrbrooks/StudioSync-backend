@@ -6,6 +6,8 @@ Router.get("/get/all", controller.getAllProspects)
 Router.get("/get/:id", controller.getProspectById)
 Router.get("/get/userprospects/:id", controller.getUserProspects)
 
+Router.put("/update/:id", controller.updateProspect)
+
 Router.post("/create", controller.createProspect)
 
 module.exports = Router
