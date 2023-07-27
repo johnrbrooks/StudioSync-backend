@@ -8,4 +8,6 @@ Router.get("/get/username/:username", controller.getUserByUsername)
 
 Router.post("/create", controller.createUser)
 
+Router.put("/:id/removeProspect/:prospectId", controller.updateUserPipeline)
+
 module.exports = Router;

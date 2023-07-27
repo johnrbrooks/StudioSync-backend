@@ -92,10 +92,26 @@ const updateProspect = async (req, res) => {
   }
 }
 
+const deleteProspect = async (req, res) => {
+  
+  const prospectId = req.params.id
+
+  try {
+    const deletedProspect = await Prospect.findByIdAndDelete(prospectId)
+    if(!deletedProspect) {
+      return res.status(404).json({ message: 'Prospect not found'})
+    }
+  } catch (error) {
+    console.error('Error deleting prospect:', error)
+    res.status(500).json({ message: 'Error deleting prospect' })
+  }
+}
+
 module.exports = {
     getAllProspects,
     getProspectById,
     getUserProspects,
     createProspect,
-    updateProspect
+    updateProspect,
+    deleteProspect
 }

@@ -44,9 +44,31 @@ const createUser = async (req, res) => {
   }
 }
 
+const updateUserPipeline = async (req, res) => {
+
+  const userId = req.params.id
+  const prospectId = req.params.prospectId
+
+  try {
+    const user = await User.findById(userId)
+    if(!user) {
+      return res.status(404).json({ message: 'User not found'})
+    }
+
+    user.pipeline = user.pipeline.filter((id) => id.toString() !== prospectId)
+    await user.save()
+
+    res.json({ message: 'Prospect removed from pipeline successfully' })
+  } catch (error) {
+    console.error('Error removing prospect from pipeline:', error)
+    res.status(500).json({ message: 'Error removing prospect from pipeline'})
+  }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
     getUserByUsername,
-    createUser
+    createUser,
+    updateUserPipeline,
 }
