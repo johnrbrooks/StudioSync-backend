@@ -1,5 +1,5 @@
 const { User } = require('../models')
-const { Calendar } = require('../models')
+const { Prospect } = require('../models')
 
 const getAllUsers = async (req, res) => {
     try {
@@ -65,10 +65,36 @@ const updateUserPipeline = async (req, res) => {
   }
 }
 
+const deleteUser = async (req, res) => {
+  const userId = req.params.id
+
+  try {
+    const user = await User.findByIdAndDelete(userId)
+    if(!user) {
+      return res.status(404).json({ message: 'User not found' })
+    }
+    res.json('User deleted!')
+  } catch (error) {
+    console.error('Error deleting user:', error)
+    res.status(500).json({ message: 'Error deleting user' })
+  }
+  try {
+    const prospects = await Prospect.deleteMany({ user_pipeline: userId })
+    if(!prospects) {
+      return res.status(404).json({ message: 'Prospects not found' })
+    }
+    res.json('Prospects deleted')
+  } catch (error) {
+    console.error('Error deleting prospects:', error)
+    res.status(500).json({ message: 'Error deleting prospects' })
+  }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
     getUserByUsername,
     createUser,
     updateUserPipeline,
+    deleteUser
 }

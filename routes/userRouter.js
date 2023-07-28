@@ -10,4 +10,6 @@ Router.post("/create", controller.createUser)
 
 Router.put("/:id/removeProspect/:prospectId", controller.updateUserPipeline)
 
+Router.delete("/delete/:id", controller.deleteUser)
+
 module.exports = Router;
