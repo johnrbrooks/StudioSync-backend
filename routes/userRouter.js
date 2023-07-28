@@ -9,6 +9,7 @@ Router.get("/get/username/:username", controller.getUserByUsername)
 Router.post("/create", controller.createUser)
 
 Router.put("/:id/removeProspect/:prospectId", controller.updateUserPipeline)
+Router.put("/update/:id", controller.updateUser)
 
 Router.delete("/delete/:id", controller.deleteUser)
 

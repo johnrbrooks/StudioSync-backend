@@ -65,6 +65,27 @@ const updateUserPipeline = async (req, res) => {
   }
 }
 
+const updateUser = async (req, res) => {
+
+  const userId = req.params.id
+
+  try {
+    let updateUser = await User.findOneAndUpdate(
+      { _id: userId },
+      {
+        name: req.body.name,
+        username: req.body.username,
+        password: req.body.password,
+        mode: req.body.mode,
+      },
+      { new: true }
+    )
+    res.send(updateUser)
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 const deleteUser = async (req, res) => {
   const userId = req.params.id
 
@@ -96,5 +117,6 @@ module.exports = {
     getUserByUsername,
     createUser,
     updateUserPipeline,
-    deleteUser
+    updateUser,
+    deleteUser,
 }
